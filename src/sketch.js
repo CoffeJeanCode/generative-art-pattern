@@ -4,13 +4,13 @@ const SIDES = 6;
 // layout
 const MARGIN = CRYSTAL_SIZE / 2;
 const COLUMNS = 3;
-const ROWS = 4;
+const ROWS = 3;
 const PADDING = CRYSTAL_SIZE * 0.2;
 const GRIDBOX = CRYSTAL_SIZE + PADDING;
 const START = CRYSTAL_SIZE / 2 + MARGIN;
 
 let PALETTE = [];
-ALL_CRYSTALS = [];
+let ALL_CRYSTALS = [];
 
 function setup() {
   const totalX = START + GRIDBOX * COLUMNS;
@@ -34,7 +34,6 @@ function draw() {
       const posX = START + x * GRIDBOX;
       const posY = START + y * GRIDBOX;
       const crystal = makeCrystal({ x: posX, y: posY });
-      console.log(crystal);
       ALL_CRYSTALS.push(crystal);
     }
   }

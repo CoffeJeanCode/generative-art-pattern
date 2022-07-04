@@ -1,4 +1,4 @@
-const getRandomColorFromPalette = () => PALETTE[floor(random(PALETTE.length))];
+const getRandomFromPalette = () => PALETTE[floor(random(PALETTE.length))];
 
 const makeShape =
   (sides = 6) =>
@@ -22,15 +22,7 @@ const posInCircle = (x, y, radius, angle) => {
   return createVector(vx, vy);
 };
 
-const randomSelectTwo = () => {
-  const rando = random(1);
-  return rando > 0.5 ? true : false;
-};
-
-const getRandomFromPalette = () => {
-  const rando = floor(random(0, PALETTE.length));
-  return PALETTE[rando];
-};
+const randomSelectTwo = () => random([true, false]);
 
 const hexagon = makeShape(6);
 const triangle = makeShape(3);

@@ -6,11 +6,14 @@ const state = {
 };
 
 const setState = (state) => {
-  (state.numShapes = state.sides),
-    (state.angle = 360 / state.numShapes),
-    (state.singleStep = CRYSTAL_SIZE / 2 / state.stepsOut),
-    (state.layerColor = getRandomFromPalette());
-  return state;
+  const newState = Object.assign({}, state);
+
+  newState.numShapes = state.sides;
+  newState.angle = 360 / newState.numShapes;
+  newState.singleStep = CRYSTAL_SIZE / 2 / state.stepsOut;
+  newState.layerColor = getRandomFromPalette();
+
+  return newState;
 };
 
 const circles = (state) => {
@@ -24,8 +27,8 @@ const circles = (state) => {
       noFill();
       stroke(state.layerColor);
       strokeWeight(1);
+
       push();
-      //translate(width/2, height/2)
       for (let i = 0; i <= state.numShapes; i++) {
         ellipse(state.position, 0, state.shapeSize, state.shapeSize);
         rotate(state.angle);
@@ -53,8 +56,8 @@ const simpleLines = (state) => {
       noFill();
       stroke(state.layerColor);
       strokeWeight(state.weight);
+      
       push();
-      //translate(width/2, height/2)
       for (let i = 0; i < state.numShapes; i++) {
         line(state.start * state.step, 0, state.stop * state.step, 0);
         rotate(state.angle);
@@ -74,8 +77,8 @@ const outlineShape = (state) => {
     render: () => {
       stroke(state.layerColor);
       strokeWeight(state.weight);
+      
       push();
-      //translate(width/2, height/2)
       if (state.hexagonTrue) {
         hexagon(0, 0, CRYSTAL_SIZE / 2);
       } else {
